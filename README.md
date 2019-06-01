@@ -1,9 +1,17 @@
-# Pandas-
-All the codes are written in jupyter notebook. So before starting make sure to install anaconda .
+## My Pandas Doubt Notebook :-
 
-if you are not able to access Jupyter notebook on windows by double clicking on it , try to run it from command prompt
-using the following instructions:-
-Browse to the directory you have jupyter notebook shortcut saved by using cd command 
-and then run jupyter notebook by typing the name.
+## When to find of many values in a column:-
+df_int['Ensemble_MAPE']=df_int[['MAPE_Xgb','MAPE_Ridge','MAPE_Lasso','MAPE_RF']].min(axis=1)
 
-All the data used in the code are saved in data folder 
+## Find the column name having least values out of a series of column:-
+df_int['Best_Performing_model']=df_int[['MAPE_Xgb','MAPE_Ridge','MAPE_Lasso','MAPE_RF']].idxmin(axis=1)
+
+## Merging by selecting a set of columns from 1 dataframe with other dataframe:-
+pd.merge(df_ensemble.loc[:,['LANES','MAPE_Xgb','MAPE_Ridge','MAPE_Lasso','MAPE_RF']],df_mix,on=['LANES'])
+
+
+## Applying apply function on multiple columns in a dataframe
+dict1={'MAPE_RF':'Infy_RF_PREDICTIONS','MAPE_Lasso':'Infy_lasso_PREDICTIONS','MAPE_Xgb':'Infy_Xgb_PREDICTIONS','MAPE_Ridge':'Infy_Ridge_PREDICTIONS'}
+
+df_mix['BEST_PREDICTIONS']=df_mix.apply(lambda x:x[dict1[x['Best_Performing_model']]],axis=1)
+
