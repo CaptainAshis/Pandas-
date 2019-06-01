@@ -15,3 +15,5 @@ dict1={'MAPE_RF':'Infy_RF_PREDICTIONS','MAPE_Lasso':'Infy_lasso_PREDICTIONS','MA
 
 df_mix['BEST_PREDICTIONS']=df_mix.apply(lambda x:x[dict1[x['Best_Performing_model']]],axis=1)
 
+## Reversing  a dictionary
+inv_map = {v: k for k, v in dict1.items()}
