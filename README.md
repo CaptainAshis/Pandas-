@@ -1,4 +1,4 @@
-## My Pandas Doubt Notebook :-
+## My Pandas Personal Notebook :-
 
 ## When to find of many values in a column:-
 df_int['Ensemble_MAPE']=df_int[['MAPE_Xgb','MAPE_Ridge','MAPE_Lasso','MAPE_RF']].min(axis=1)
