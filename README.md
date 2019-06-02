@@ -17,3 +17,40 @@ df_mix['BEST_PREDICTIONS']=df_mix.apply(lambda x:x[dict1[x['Best_Performing_mode
 
 ## Reversing  a dictionary
 inv_map = {v: k for k, v in dict1.items()}
+
+
+## SQL using Python
+import sqlite3 
+connection = sqlite3.connect("myTable.db")
+
+#### cursor  
+crsr = connection.cursor() 
+  
+#### SQL command to create a table in the database 
+sql_command = """CREATE TABLE MArket2 (  
+SELLER_ID INTEGER PRIMARY KEY,  
+COUNTRY VARCHAR(20),  
+JOINING_DATE DATE);"""
+  
+  
+#### execute the statement 
+crsr.execute(sql_command) 
+  
+  
+#### SQL command to insert the data in the table 
+sql_command = """INSERT INTO MArket2 VALUES (23, "India", "2014-03-28");"""
+crsr.execute(sql_command) 
+  
+#### another SQL command to insert the data in the table 
+sql_command = """INSERT INTO MArket2 VALUES (24, "USA", "2014-03-29");"""
+crsr.execute(sql_command) 
+
+#### If we skip this, nothing will be saved in the database. 
+connection.commit() 
+
+crsr.execute("SELECT * FROM Employee, MArket2;")
+
+
+ans= crsr.fetchall() 
+for i in ans: 
+    print(i) 
