@@ -61,3 +61,29 @@ for i in ans:
 !jupyter contrib nbextension install --user
 !pip install jupyter_nbextensions_configurator
 !jupyter nbextensions_configurator enable --user
+
+
+
+## Reading and writing multiple excel sheets using pandas
+import pandas as pd
+
+xls = pd.ExcelFile('Data.xlsx')
+xls.sheet_names
+
+sheet_to_df_map = {}
+for sheet_name in xls.sheet_names:
+    print(sheet_name)
+    sheet_to_df_map[sheet_name] = xls.parse(sheet_name)
+
+writer = pd.ExcelWriter('pandas_multiple.xlsx', engine='xlsxwriter')
+for Country, data in sheet_to_df_map.items():
+    df1=pd.DataFrame()
+    print(Country,type(data))
+    df1=data
+    df1['one_time_cost/recurring_cost']=df1['one_time_cost']/df1['recurring_cost']
+    df2=df1.pivot(index='name', columns='Year-Quarter', values=['ease_of_use','ease_of_setup','ease_of_doing_business_with','pricing','one_time_cost/recurring_cost'])
+    df2.to_excel(writer, sheet_name=Country)
+writer.save()
+
+
+
