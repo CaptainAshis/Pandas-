@@ -88,7 +88,9 @@ writer.save()
 
 # Variable named saving or reading a file
 name='gain'
+
 train = pd.read_csv(f'{name}.csv')
+
 rslt.to_csv(f'{name}_hate/Word_freq_{name}.csv')
 
 train_polarity_desc.to_csv(f'{name}_hate/Sentiment_{name}.csv')
@@ -99,5 +101,7 @@ sql='''select p.name product, cp.*, c.name category from cp cp
 inner join pp p on p.id=cp.product_id
 inner join cc c on c.id=cp.category_id
 where lower(p.name) = %(product)s '''
+
 product_id=pd.read_sql(con=connect_admin(),sql=sql,params={'product' : 'tota'}).at[0, 'product_id']
+
 product_id
