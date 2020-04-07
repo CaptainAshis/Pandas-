@@ -105,3 +105,6 @@ where lower(p.name) = %(product)s '''
 product_id=pd.read_sql(con=connect_admin(),sql=sql,params={'product' : 'tota'}).at[0, 'product_id']
 
 product_id
+
+# default dict
+https://stackoverflow.com/questions/5900578/how-does-collections-defaultdict-work
