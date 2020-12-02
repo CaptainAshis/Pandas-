@@ -113,3 +113,5 @@ https://stackoverflow.com/questions/5900578/how-does-collections-defaultdict-wor
 # Color print
 print('\033[92m' + 'this is cool')
 
+# Dictionary :-This prints -1 because the key is not found and we set the default to -1
+print(dictionary.get('key7', -1))
