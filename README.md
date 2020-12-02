@@ -108,3 +108,8 @@ product_id
 
 # default dict
 https://stackoverflow.com/questions/5900578/how-does-collections-defaultdict-work
+
+
+# Color print
+print('\033[92m' + 'this is cool')
+
