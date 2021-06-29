@@ -115,3 +115,7 @@ print('\033[92m' + 'this is cool')
 
 # Dictionary :-This prints -1 because the key is not found and we set the default to -1
 print(dictionary.get('key7', -1))
+
+# Remove timezone effectively
+df.set_index('time', inplace=True)
+df.index = pd.to_datetime(df.index, utc=True, unit='ns').tz_convert(None)
