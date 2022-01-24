@@ -119,3 +119,12 @@ print(dictionary.get('key7', -1))
 # Remove timezone effectively
 df.set_index('time', inplace=True)
 df.index = pd.to_datetime(df.index, utc=True, unit='ns').tz_convert(None)
+
+
+# Convert strings into callable object
+from inspect import signature
+for mod in l2:
+  module=__import__(mod)
+  func=getattr(module,mod)
+  str1=list((signature(func)).parameters.keys())
+  
